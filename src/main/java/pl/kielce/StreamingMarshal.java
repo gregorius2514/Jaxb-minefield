@@ -1,5 +1,7 @@
 package pl.kielce;
 
+import com.sun.xml.internal.txw2.output.IndentingXMLStreamWriter;
+
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
@@ -11,6 +13,8 @@ public class StreamingMarshal
 
     public static void main(String[] args) throws FileNotFoundException, XMLStreamException {
         XMLStreamWriter xmlOut = XMLOutputFactory.newFactory().createXMLStreamWriter(new FileOutputStream("/tmp/file.xml"), "UTF-8");
+        xmlOut = new IndentingXMLStreamWriter(xmlOut);
+
         xmlOut.writeStartDocument();
         xmlOut.writeStartElement("rootElement");
 
